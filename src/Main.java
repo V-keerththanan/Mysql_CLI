@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Main {
     static Scanner scan = new Scanner(System.in);
-    public static int doLoginPage(){
+    public static int doinitialPage(){
         int select;
         System.out.println("\n\t\t=======Welcome to CLI Facebook======\t");
         System.out.println("\t\t\t1.Log in\t");
@@ -14,7 +14,7 @@ public class Main {
     }
 
     public static void main(String[] args){
-        int option= doLoginPage();
+        int option= doinitialPage();
     }
 
 
