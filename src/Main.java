@@ -14,7 +14,21 @@ public class Main {
     }
 
     public static void main(String[] args){
-        int option= doinitialPage();
+
+        while (true) {
+            int option = doinitialPage();
+            if (option == 1) {
+                Login objLogin = new Login();
+                objLogin.getInformation();
+                objLogin.Verification();
+            } else if (option == 2) {
+                Register objRegister = new Register();
+                objRegister.getAndpushDetails();
+            } else {
+                System.out.println("\tGood Bye!....");
+                break;
+            }
+        }
     }
 
 
