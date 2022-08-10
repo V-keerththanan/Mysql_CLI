@@ -20,7 +20,12 @@ public class Main {
             if (option == 1) {
                 Login objLogin = new Login();
                 objLogin.getInformation();
-                objLogin.Verification();
+                if(objLogin.Verification()){
+                    objLogin.printAlloneuserD();
+                }else{
+                    System.out.println(" Try !");
+                }
+
             } else if (option == 2) {
                 Register objRegister = new Register();
                 objRegister.getAndpushDetails();
