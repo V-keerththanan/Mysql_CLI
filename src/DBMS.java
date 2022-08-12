@@ -26,6 +26,8 @@ public class DBMS {
             pstatement.setString(4, mobnum);
             pstatement.setString(5, passw);
             pstatement.executeUpdate();
+        } catch (SQLIntegrityConstraintViolationException e) {
+            System.out.println("Your user name already exist! Try another");
         } catch (SQLException e) {
             e.printStackTrace();
         }

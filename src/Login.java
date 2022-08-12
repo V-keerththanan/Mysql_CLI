@@ -8,7 +8,7 @@ public class Login {
     private String Enteredpassword;
     private Map<String, String> Allidentification;
     private Map<String, ArrayList<String>> AllDetails;
-    static Scanner scan = new Scanner(System.in);
+    Scanner scan = new Scanner(System.in);
 
     public void getInformation() {
         System.out.println("\tHello! ");
@@ -35,7 +35,23 @@ public class Login {
 
         }
     }
-
+    public void initialLogin(){
+        int select;
+        while (true) {
+            System.out.println("\t---Select option---");
+            System.out.println("\t\t1.Profile");
+            System.out.println("\t\t2.Friends");
+            System.out.println("\t\t3.log out");
+            select = scan.nextInt();
+            if (select == 1) {
+                    // have to implement
+            } else if (select == 2) {
+                    // have to implement
+            } else {
+                break;
+            }
+        }
+    }
     public void printAlloneuserD() {
         this.AllDetails = this.objdbms.getAllDetails();
         String fname = this.AllDetails.get(this.Enteredusername).get(0);
