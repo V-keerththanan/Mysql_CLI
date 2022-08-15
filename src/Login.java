@@ -3,11 +3,10 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class Login {
-    DBMS objdbms = new DBMS();
+
     private String Enteredusername;
     private String Enteredpassword;
     private Map<String, String> Allidentification;
-    private Map<String, ArrayList<String>> AllDetails;
     Scanner scan = new Scanner(System.in);
 
     public void getInformation() {
@@ -20,7 +19,8 @@ public class Login {
     }
 
     public boolean Verification() {
-        this.Allidentification = this.objdbms.getAllusernameAndpassword();
+        DBMS objdbms = new DBMS();
+        this.Allidentification = objdbms.getAllusernameAndpassword();
         if (this.Allidentification.containsKey(this.Enteredusername)) {
 
             if (this.Allidentification.get(this.Enteredusername).equals(this.Enteredpassword)) {
@@ -40,27 +40,42 @@ public class Login {
         while (true) {
             System.out.println("\t---Select option---");
             System.out.println("\t\t1.Profile");
-            System.out.println("\t\t2.Friends");
+            System.out.println("\t\t2.More Active user");
             System.out.println("\t\t3.log out");
             select = scan.nextInt();
             if (select == 1) {
-                    // have to implement
+                    printAlloneuserD();
             } else if (select == 2) {
-                    // have to implement
+                   printAlluser();
             } else {
                 break;
             }
         }
     }
     public void printAlloneuserD() {
-        this.AllDetails = this.objdbms.getAllDetails();
-        String fname = this.AllDetails.get(this.Enteredusername).get(0);
-        String lname = this.AllDetails.get(this.Enteredusername).get(1);
-        String mobNum = this.AllDetails.get(this.Enteredusername).get(2);
+        DBMS objdbms = new DBMS();
+        String fname = objdbms.getAllDetails().get(this.Enteredusername).get(0);
+        String lname = objdbms.getAllDetails().get(this.Enteredusername).get(1);
+        String mobNum = objdbms.getAllDetails().get(this.Enteredusername).get(2);
 
         System.out.println("\t-------Welcome " + fname + " " + lname);
         System.out.println("You user Name is :- " + this.Enteredusername);
         System.out.println("Your Mobile Number is :- " + mobNum);
 
+    }
+    public void printAlluser(){
+        DBMS objdbms = new DBMS();
+        int i=1;
+        for( Map.Entry<String, ArrayList<String> > entry : objdbms.getAllDetails().entrySet() ){
+            if (entry.getKey().equals(this.Enteredusername)){
+                continue;
+            }else {
+                System.out.println("---------" + i + "----------");
+                System.out.println("First name" + "=> " + entry.getValue().get(0));
+                System.out.println("Last name" + "=> " + entry.getValue().get(1));
+                System.out.println("Mobile Number" + "=> " + entry.getValue().get(2));
+                i++;
+            }
+        }
     }
 }

@@ -21,7 +21,7 @@ public class Main {
                 Login objLogin = new Login();
                 objLogin.getInformation();
                 if(objLogin.Verification()){
-                    objLogin.printAlloneuserD();
+                   objLogin.initialLogin();
                 }else{
                     System.out.println(" Try !");
                 }
